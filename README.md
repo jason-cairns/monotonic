@@ -29,9 +29,9 @@ An example of monotonic MLP (you **must use at least 4 layers** to have theoreti
 ```python
 monotonic_mlp = nn.Sequential([
     MonotonicLinear(N, 16, pre_activation=nn.Identity()),
-    MonotonicLinear(16, 16, pre_activation=nn.SiLU()),
-    MonotonicLinear(16, 16, pre_activation=nn.SiLU()),
-    MonotonicLinear(16, 1, pre_activation=nn.SiLU()),
+    MonotonicLinear(16, 16, pre_activation=nn.SELU()),
+    MonotonicLinear(16, 16, pre_activation=nn.SELU()),
+    MonotonicLinear(16, 1, pre_activation=nn.SELU()),
 ])
 ```
 
@@ -46,9 +46,9 @@ non_monotonic_mlp = nn.Sequential([
 
 monotonic_mlp = nn.Sequential([
     MonotonicLinear(16+N, 16, pre_activation=nn.Identity()),
-    MonotonicLinear(16, 16, pre_activation=nn.SiLU()),
-    MonotonicLinear(16, 16, pre_activation=nn.SiLU()),
-    MonotonicLinear(16, 1, pre_activation=nn.SiLU()),
+    MonotonicLinear(16, 16, pre_activation=nn.SELU()),
+    MonotonicLinear(16, 16, pre_activation=nn.SELU()),
+    MonotonicLinear(16, 1, pre_activation=nn.SELU()),
 ])
 
 x_non_monotonic = non_monotonic_mlp(x_non_monotonic)
@@ -57,4 +57,4 @@ x_monotonic = monotonic_mlp(x_monotonic)
 ```
 
 ## Repository structure
-Inside `experiments`, the `data` folder already contains the CSV for the datasets. Instead `exp_{dataset}.ipynb` contains the training loop and the evaluation for the corresponding `dataset`
+Inside `experiments`, the `data` folder already contains the CSV for the datasets. Instead, `exp_{dataset}.ipynb` contains the training loop and the evaluation for the corresponding `dataset`
