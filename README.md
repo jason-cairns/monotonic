@@ -52,7 +52,7 @@ monotonic_mlp = nn.Sequential([
 ])
 
 x_non_monotonic = non_monotonic_mlp(x_non_monotonic)
-x_monotonic = torch.cat((x, x_monotonic), dim=-1)
+x_monotonic = torch.cat((x, x_non_monotonic), dim=-1)
 x_monotonic = monotonic_mlp(x_monotonic)
 ```
 
